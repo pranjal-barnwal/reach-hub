@@ -1,5 +1,4 @@
 # Reach Hub
-
 Assignment files for reach-hub
 
 # Player names for testing
@@ -46,6 +45,10 @@ Assignment files for reach-hub
 
 `Only showing 2 users instead of 50 for simplicity`
 
+
+
+## Rating History for player
+> https://lichess.org/api/user/{username}/rating-history/classical
 ```json
 [
   {
