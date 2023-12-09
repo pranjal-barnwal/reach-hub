@@ -58,7 +58,6 @@ def get_top_players():
         # Extracting id, username and rating information
         top_player_usernames = [(user["id"], user["username"], user["perfs"]["classical"]["rating"]) for user in top_players_data]
 
-
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error fetching top players from Lichess API: {e}")
 
@@ -114,47 +113,8 @@ def get_rating_history(username: str):
 
 
 
-# Example route to fetch a CSV file with the rating history for the top 50 players
+
 @app.get("/players/rating-history-csv", response_class=Response)
-def get_rating_history_csv():
-    try:
-        # first fetching the list of top 50 players and extracting users array from it
-        top_players_response = requests.get(top_players_url)
-        top_players_data = top_players_response.json().get("users")
-
-        # Prepare CSV data
-        csv_data = StringIO()
-        csv_writer = csv.writer(csv_data)
-
-        # Write CSV header
-        csv_writer.writerow(["Username", "Rating 30 Days Ago", "Rating Today"])
-
-        # Fetch rating history for each top player
-        for user in top_players_data:
-            username = user.get("username")
-            player_rating_history_url = rating_history_url.format(username=username)
-            rating_history_response = requests.get(player_rating_history_url)
-            rating_history_data = rating_history_response.json()
-
-            # Extract rating from 30 days ago and today
-            rating_30_days_ago = rating_history_data[-30].get("rating", "N/A") if len(rating_history_data) >= 30 else "N/A"
-            rating_today = rating_history_data[-1].get("rating", "N/A")
-
-            # Write player data to CSV
-            csv_writer.writerow([username, rating_30_days_ago, rating_today])
-
-        # Set up response with CSV data
-        response = Response(content=csv_data.getvalue(), media_type="text/csv")
-        response.headers["Content-Disposition"] = "attachment; filename=rating_history.csv"
-
-        return response
-
-    except requests.exceptions.RequestException as e:
-        raise HTTPException(status_code=500, detail=f"Error fetching data from Lichess API: {e}")
-
-
-
-@app.get("/players/rating-history-csv2", response_class=Response)
 def get_rating_history_csv():
     try:
         # first fetching the list of top 50 players and extracting users array from it
