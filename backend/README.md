@@ -23,9 +23,9 @@ uvicorn main:app --reload
 
 
 ## Sample Data
-- [Top Player Data](###top-players-data)
-- [Rating History for player](###rating-history-for-player)
-- [Rating History CSV](###rating-history-csv)
+- [Top Player Data](#top-players-data)
+- [Rating History for player](#rating-history-for-player)
+- [Rating History CSV](#rating-history-csv)
 
 
 ### Top Players Data
