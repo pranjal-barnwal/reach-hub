@@ -26,7 +26,7 @@ uvicorn main:app --reload
 - [Top Player Data](#top-players-data)
 - [Rating History for player](#rating-history-for-player)
 - [Rating History CSV](#rating-history-csv)
-
+---
 
 ### Top Players Data
 This endpoint returns array of top players details. Each including: `id`, `username` & `rating`
@@ -45,6 +45,7 @@ This endpoint returns array of top players details. Each including: `id`, `usern
 }
 # [id, username, rating]
 ```
+---
 
 
 
@@ -67,6 +68,7 @@ For dates where no-rating is mentioned, we copied the last available data.
   ]
 }
 ```
+---
 
 
 
@@ -83,5 +85,6 @@ OjaiJoao,2479,2481,2481,2481,2481,2481,2481,...
 igormezentsev,0,2472,2469,2469,2470,2476,2479,...
 DrOrfeo,0,0,2429,2429,2429,2429,2429,...
 ```
+---
 
 
