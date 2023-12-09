@@ -158,29 +158,37 @@ def get_rating_history_csv():
 def get_rating_history_csv():
     try:
         # first fetching the list of top 50 players and extracting users array from it
-        top_players_response = requests.get(top_players_url)
-        top_players_data = top_players_response.json().get("users")
+        top_players_response = get_top_players()
+        # print(top_players_response.get("top_players"))
+        top_players_data = [player[1] for player in top_players_response["top_players"]]
+        # print(top_players_data)           # list of username of top players
 
         # Prepare CSV data
         csv_data = StringIO()
         csv_writer = csv.writer(csv_data)
 
+        # Extract dates from points array
+        dates_points = get_rating_history(top_players_data[0]).get("points")
+        # print(dates_points)
+        dates = [point[0] for point in dates_points]
+
         # Write CSV header
-        csv_writer.writerow(["Username", "Rating 30 Days Ago", "Rating Today"])
+        header_data = ["username"]
+        header_data.extend(dates) 
+        # print(header_data);
+        csv_writer.writerow(header_data)
 
         # Fetch rating history for each top player
+        # evaluating list of ratings for each user along with username at front for the last 30 days
         for user in top_players_data:
-            username = user.get("username")
-            player_rating_history_url = rating_history_url.format(username=username)
-            rating_history_response = requests.get(player_rating_history_url)
-            rating_history_data = rating_history_response.json()
-
-            # Extract rating from 30 days ago and today
-            rating_30_days_ago = rating_history_data[-30].get("rating", "N/A") if len(rating_history_data) >= 30 else "N/A"
-            rating_today = rating_history_data[-1].get("rating", "N/A")
+            player_rating_history = get_rating_history(user).get("points")
+            # print(player_rating_history)
+            current_row = [user]
+            ratings = [player_rating[1] for player_rating in player_rating_history]
+            current_row.extend(ratings)
 
             # Write player data to CSV
-            csv_writer.writerow([username, rating_30_days_ago, rating_today])
+            csv_writer.writerow(current_row)
 
         # Set up response with CSV data
         response = Response(content=csv_data.getvalue(), media_type="text/csv")
