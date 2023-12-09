@@ -6,6 +6,12 @@ from io import StringIO
 import csv
 from datetime import datetime, timedelta
 
+from app import fetch_and_store_data
+
+
+
+
+
 # Create an instance of the FastAPI class
 app = FastAPI()
 
@@ -34,6 +40,13 @@ top_players_url = "https://lichess.org/api/player/top/50/classical"
 rating_history_url = "https://lichess.org/api/user/{username}/rating-history"
 
 
+
+
+
+# Example FastAPI route to fetch and store data in the database
+@app.get("/fetch-and-store-data")
+def fetch_and_store_to_db():
+    return fetch_and_store_data()
 
 
 
@@ -94,12 +107,11 @@ def get_rating_history(username: str):
 
         # Create CSV data for each date with the corresponding rating or the last available rating
         csv_data = []
-        last_rating = None
+        last_rating = 0
         for date in date_range:
             date_str = date.strftime("%d-%m-%Y")
             rating = data_dict.get(date_str, last_rating)
-            if rating is not None:
-                last_rating = rating
+            last_rating = rating
             csv_data.append([date_str, rating])
 
 
@@ -153,7 +165,6 @@ def get_rating_history_csv():
         # Set up response with CSV data
         response = Response(content=csv_data.getvalue(), media_type="text/csv")
         response.headers["Content-Disposition"] = "attachment; filename=rating_history.csv"
-
         return response
 
     except requests.exceptions.RequestException as e:

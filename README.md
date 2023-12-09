@@ -16,6 +16,66 @@ Assignment files for reach-hub
 
 ```json
 {
+  "top_players": [
+    "Apodex64",
+    "Unkreativ3",
+    "Josip_buje",
+    "OjaiJoao",
+    "igormezentsev",
+    "DrOrfeo",
+    "ChessTheory64",
+    "Sharkfang",
+    "cihanakif",
+    "kc6",
+    "Ragehunter",
+    "SirRomp",
+    "iCe_eNerGyTeaM",
+    "alp_arslan92",
+    "titanshahmat2003",
+    "GreenEyesWolf",
+    "HerrLowenthal",
+    "TheGodOfChess10",
+    "Tinea",
+    "uzkuzk",
+    "ChesskingOriginal",
+    "SensefulChess",
+    "Vlad_Lazarev79",
+    "GGbers",
+    "PeterPanter",
+    "gek76",
+    "asm2020",
+    "e4e5chess",
+    "Rajibmr",
+    "repeat_42b",
+    "ShahmatistRUS",
+    "StudyKeyser",
+    "LithargoelTheThrice",
+    "HongKongPhooey",
+    "KirillGorkov",
+    "Soundlad123",
+    "underground1",
+    "NoGoodBoyo",
+    "avcs",
+    "Maruti80",
+    "morgadochess",
+    "Madhavanrmunjanattu",
+    "WillyJohnson",
+    "alouettebaba",
+    "Chess_for_some",
+    "cjota95",
+    "gurov-dmitriy",
+    "Nervioso79",
+    "kabes23",
+    "zverhun"
+  ]
+}
+```
+
+
+
+
+```json
+{
   "users": [
     {
       "id": "apodex64",
