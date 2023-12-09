@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { Link } from "react-router-dom";
 import { saveAs } from 'file-saver';
+import Loader from './Loader';
 
 const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
@@ -53,27 +54,19 @@ const Dashboard = () => {
     fetchRatingHistory();
   }, [selectedPlayer]);
 
-  // Memoized chart data to prevent unnecessary re-renders
-  useEffect(() => {
-    const returndata = ratingHistory.length > 0 && ratingHistory.map((entry) => ({
-      timestamp: entry.timestamp,
-      rating: entry.rating,
-    }));
-    setchartData(returndata)
-  }, [ratingHistory])
-
   const downloadCSV = async () => {
     try {
+      alert("Don't refresh the page! \nIt will take some time to process the request and your Download is in queue");
       const response = await axios.get('http://localhost:8000/players/rating-history-csv', {
         responseType: 'blob', // Ensure the response type is set to blob
       });
-  
+
       // Extract the file name from the response headers if available
       const contentDisposition = response.headers['content-disposition'];
       const fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
       const matches = fileNameRegex.exec(contentDisposition);
       const filename = matches && matches[1] ? matches[1].replace(/['"]/g, '') : 'rating_history.csv';
-  
+
       // Save the file using FileSaver.js
       saveAs(new Blob([response.data]), filename);
     } catch (error) {
@@ -82,16 +75,16 @@ const Dashboard = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: "100vw", justifyContent: "center" }}>
-      <h1>Global Lichess Dashboard</h1>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding:"5% 30%"}}>
+      <h1>Lichess Dashboard</h1>
       <div>
-        <hr/>
+        <hr />
         <h2>Download</h2>
         <button title="Download 30 days History of Top 50 players in .csv format" onClick={downloadCSV}>
           Download CSV
         </button>
-        <hr/>
-      
+        <hr />
+
         <h2>Top 50 Players</h2>
         {topPlayers.length > 0 ?
 
@@ -121,16 +114,7 @@ const Dashboard = () => {
             </tbody>
           </table>
           :
-          <div>
-            <img
-              src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.webp"
-              alt="Loading data..."
-              width={80}
-            />
-            <p style={{ justifyContent: "center", fontWeight: "bold", }}>
-              Loading...
-            </p>
-          </div>
+          <Loader/>
         }
       </div>
       {selectedPlayer && (

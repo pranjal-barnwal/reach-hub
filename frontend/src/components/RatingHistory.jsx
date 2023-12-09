@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import Loader from "./Loader";
 
 function RatingHistory() {
   const { player } = useParams();
   const [ratingHistory, setRatingHistory] = useState([]);
-  // const [Chessname, setname] = useState([]);
-  // const [dates, setdates] = useState([]);
   const [data, setdata] = useState([]);
 
   useEffect(() => {
@@ -34,51 +33,14 @@ function RatingHistory() {
     rating();
   }, []);
 
-  // function formatLast20Dates(dateArrays) {
-  //   // Ensure there are at least 20 elements
-  //   const last20Dates = dateArrays.slice(-20);
-
-  //   return last20Dates.map((dateArray) => {
-  //     const year = dateArray[0];
-  //     const month = dateArray[1];
-  //     const day = dateArray[2];
-  //     const date = new Date(year, month - 1, day);
-  //     const dd = String(date.getDate()).padStart(2, "0");
-  //     const mm = String(date.getMonth() + 1).padStart(2, "0");
-  //     const yy = String(date.getFullYear()).slice(-2);
-  //     return `${dd}/${mm}/${yy}`;
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   const dates = Chessname?.length > 0 && formatLast20Dates(Chessname);
-  //   setdates(dates)
-  // }, [Chessname]);
-
-  // useEffect(() => {
-  //   // const data = Chessname?.length > 0 && formatLast20Dates(Chessname);
-  //   // setdata(data)
-  //   const arrayOfObjects = [];
-
-  //   // Loop through the arrays and create objects
-  //   for (let i = 0; i < dates.length; i++) {
-  //     const obj = {
-  //       date: dates[i],
-  //       rating: Chessname[i][3]
-
-  //     };
-
-  //     arrayOfObjects.push(obj);
-  //   }
-  //   setdata(arrayOfObjects)
-
-  // }, [dates]);
-
-
+  const redirectToOfficial = () => {
+    let url = 'https://lichess.org/@/' + player;
+    window.location.href = url;
+  }
 
 
   return (
-    <div style={{ width: "100%", height: "100vh", display: "flex", flexDirection:"column", justifyContent: "center", alignItems: "center" }}>
+    <div style={{ width: "100%", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
       {data.length > 0 ?
         <>
           <h1>Last 30 days of {player}'s Data</h1>
@@ -88,9 +50,9 @@ function RatingHistory() {
               height={300}
               data={ratingHistory}
               margin={{
-                top: 5,
+                top: 55,
                 right: 30,
-                left: 20,
+                left: 30,
                 bottom: 5,
               }}
             >
@@ -106,18 +68,14 @@ function RatingHistory() {
                 activeDot={{ r: 8 }}
               />
             </LineChart>
-          </ResponsiveContainer> </>
+          </ResponsiveContainer>
+          <br/>
+          <button title="View the profile on Official Lichess Portal" onClick={redirectToOfficial} >
+            View Official
+          </button>
+        </>
         :
-        <div>
-          <img
-            src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.webp"
-            alt="Loading data..."
-            width={80}
-          />
-          <p style={{ justifyContent: "center", fontWeight: "bold", }}>
-            Loading...
-          </p>
-        </div>}
+        <Loader />}
 
     </div>
   );

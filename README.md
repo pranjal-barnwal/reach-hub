@@ -1,16 +1,16 @@
 # Reach Hub
 Assignment files for reach-hub
 
-# Player names for testing
+## Player names for testing
 
 - Apodex64
 - sahibsinghknight
 - Unkreativ3
 - Josip_buje
 
-# Sample Data
+## Sample Data
 
-## Top Players Data
+### Top Players Data
 
 > https://lichess.org/api/player/top/50/classical
 
@@ -107,7 +107,7 @@ Assignment files for reach-hub
 
 
 
-## Rating History for player
+### Rating History for player
 > https://lichess.org/api/user/{username}/rating-history/classical
 ```json
 [
