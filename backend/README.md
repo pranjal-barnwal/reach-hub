@@ -14,182 +14,74 @@ cd .\backend\
 pip i
 
 # activating virtual environment script
-..\venv\Scripts\activate
+.\env\Scripts\activate
 
 # running app of main.py for server
 uvicorn main:app --reload
 ```
 
 
-## Player names for testing
-
-- Apodex64
-- sahibsinghknight
-- Unkreativ3
-- Josip_buje
 
 ## Sample Data
+- [Top Player Data](###top-players-data)
+- [Rating History for player](###rating-history-for-player)
+- [Rating History CSV](###rating-history-csv)
+
 
 ### Top Players Data
+This endpoint returns array of top players details. Each including: `id`, `username` & `rating`
+> **Reference:** https://lichess.org/api/player/top/50/classical
 
-> https://lichess.org/api/player/top/50/classical
+**Endpoint:** `/top-players`
 
 ```json
 {
   "top_players": [
-    "Apodex64",
-    "Unkreativ3",
-    "Josip_buje",
-    "OjaiJoao",
-    "igormezentsev",
-    "DrOrfeo",
-    "ChessTheory64",
-    "Sharkfang",
-    "cihanakif",
-    "kc6",
-    "Ragehunter",
-    "SirRomp",
-    "iCe_eNerGyTeaM",
-    "alp_arslan92",
-    "titanshahmat2003",
-    "GreenEyesWolf",
-    "HerrLowenthal",
-    "TheGodOfChess10",
-    "Tinea",
-    "uzkuzk",
-    "ChesskingOriginal",
-    "SensefulChess",
-    "Vlad_Lazarev79",
-    "GGbers",
-    "PeterPanter",
-    "gek76",
-    "asm2020",
-    "e4e5chess",
-    "Rajibmr",
-    "repeat_42b",
-    "ShahmatistRUS",
-    "StudyKeyser",
-    "LithargoelTheThrice",
-    "HongKongPhooey",
-    "KirillGorkov",
-    "Soundlad123",
-    "underground1",
-    "NoGoodBoyo",
-    "avcs",
-    "Maruti80",
-    "morgadochess",
-    "Madhavanrmunjanattu",
-    "WillyJohnson",
-    "alouettebaba",
-    "Chess_for_some",
-    "cjota95",
-    "gurov-dmitriy",
-    "Nervioso79",
-    "kabes23",
-    "zverhun"
+    ["apodex64", "Apodex64", 2555],
+    ["unkreativ3", "Unkreativ3", 2535],
+    ["josip_buje", "Josip_buje", 2534],
+    ...
   ]
 }
+# [id, username, rating]
 ```
 
 
-
-
-```json
-{
-  "users": [
-    {
-      "id": "apodex64",
-      "username": "Apodex64",
-      "perfs": {
-        "classical": {
-          "rating": 2555,
-          "progress": 56
-        }
-      }
-    },
-    {
-      "id": "unkreativ3",
-      "username": "Unkreativ3",
-      "perfs": {
-        "classical": {
-          "rating": 2535,
-          "progress": 32
-        }
-      },
-      "title": "FM",
-      "online": true
-    }
-  ]
-}
-```
-
-`Only showing 2 users instead of 50 for simplicity`
 
 
 
 ### Rating History for player
-> https://lichess.org/api/user/{username}/rating-history/classical
+This Endpoint will return last 30 dates ratings for the mentioned user
+> **Reference:** https://lichess.org/api/user/{username}/rating-history/classical
+
+For dates where no-rating is mentioned, we copied the last available data.
+
+**Endpoint:** `/player/{username}/rating-history`
 ```json
-[
-  {
-    "name": "Bullet",
-    "points": []
-  },
-  {
-    "name": "Blitz",
-    "points": []
-  },
-  {
-    "name": "Rapid",
-    "points": []
-  },
-  {
-    "name": "Classical",
-    "points": []
-  },
-  {
-    "name": "Correspondence",
-    "points": []
-  },
-  {
-    "name": "Chess960",
-    "points": []
-  },
-  {
-    "name": "King of the Hill",
-    "points": []
-  },
-  {
-    "name": "Three-check",
-    "points": []
-  },
-  {
-    "name": "Antichess",
-    "points": []
-  },
-  {
-    "name": "Atomic",
-    "points": []
-  },
-  {
-    "name": "Horde",
-    "points": []
-  },
-  {
-    "name": "Racing Kings",
-    "points": []
-  },
-  {
-    "name": "Crazyhouse",
-    "points": []
-  },
-  {
-    "name": "Puzzles",
-    "points": []
-  },
-  {
-    "name": "UltraBullet",
-    "points": []
-  }
-]
+{
+  "points": [
+    ["09-11-2023", 0],
+    ["10-11-2023", 0],
+    ["11-11-2023", 0],
+    ...
+  ]
+}
 ```
+
+
+
+### Rating History CSV
+This Endpoint will generate CSV file of last 30 days rating of top 50 players
+
+**Endpoint:** `/players/rating-history-csv`
+```csv
+username,09-11-2023,10-11-2023,11-11-2023,12-11-2023,13-11-2023,14-11-2023,15-11-2023,...
+Apodex64,0,2532,2544,2544,2544,2544,2544,...
+Unkreativ3,0,0,0,0,2522,2522,2522,...
+Josip_buje,0,0,0,0,0,2533,2533,...
+OjaiJoao,2479,2481,2481,2481,2481,2481,2481,...
+igormezentsev,0,2472,2469,2469,2470,2476,2479,...
+DrOrfeo,0,0,2429,2429,2429,2429,2429,...
+```
+
+
