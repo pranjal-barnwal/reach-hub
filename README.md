@@ -3,10 +3,10 @@ Assignment files for reach-hub
 
 # Player names for testing
 
-- chessmaster2006
-- BahadirOzen
-- penguingim1
-- Night-King96
+- Apodex64
+- sahibsinghknight
+- Unkreativ3
+- Josip_buje
 
 # Sample Data
 

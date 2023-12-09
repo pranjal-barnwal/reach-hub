@@ -82,17 +82,8 @@ def get_rating_history(username: str):
             if entry.get('name') == 'Classical':
                 data_points = entry.get('points', [])
 
-        print(type(data_points))
-        print(data_points)
-        print(type(data_points[0][0]))
-        print(type(data_points[0][1]))
-        print(type(data_points[0][2]))
-        print(type(data_points[0][3]))
-
-
         # Convert the JSON data points to Python datetime objects
         dates = [datetime(item[0], item[1]+1, item[2]) for item in data_points]
-        # dates = [datetime(item[0], item[1], item[2]) for item in data_points]
 
         # Get today's date
         today = datetime.now()
@@ -109,8 +100,6 @@ def get_rating_history(username: str):
         raise HTTPException(status_code=500, detail=f"Error fetching rating history for player {username} from Lichess API: {e}")
 
     return {"username": username, "points": last_30_days_data}
-    # return {"username": username, "points": username}
-    # return {"username": username, "points": data_points}
 
 
 
@@ -120,6 +109,7 @@ def get_rating_history(username: str):
 @app.get("/players/rating-history-csv", response_class=Response)
 def get_rating_history_csv():
     try:
+        # first fetching the list of top 50 players and extracting users array from it
         top_players_response = requests.get(top_players_url)
         top_players_data = top_players_response.json().get("users")
 
