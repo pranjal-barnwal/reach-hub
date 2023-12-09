@@ -1,0 +1,50 @@
+// Give me code to convert this first form data into second form
+
+// First form:
+[
+    [
+    "09-11-2023",
+    0
+    ],
+    [
+    "10-11-2023",
+    0
+    ],
+    [
+    "11-11-2023",
+    0
+    ],
+    [
+    "12-11-2023",
+    0
+    ],
+    [
+    "13-11-2023",
+    0
+    ]
+]
+
+
+Second form:
+[
+    {
+    date: "09-11-2023",
+    rating: 0
+},
+    {
+    date: "10-11-2023",
+    rating: 0
+},
+    {
+    date: "11-11-2023",
+    rating: 0
+},
+    {
+    date: "12-11-2023",
+    rating: 0
+},
+    {
+    date: "13-11-2023",
+    rating: 0
+    }
+]

@@ -10,6 +10,7 @@ import {
   Legend,
 } from "recharts";
 import { Link } from "react-router-dom";
+import { saveAs } from 'file-saver';
 
 const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
@@ -61,32 +62,76 @@ const Dashboard = () => {
     setchartData(returndata)
   }, [ratingHistory])
 
+  const downloadCSV = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/players/rating-history-csv', {
+        responseType: 'blob', // Ensure the response type is set to blob
+      });
+  
+      // Extract the file name from the response headers if available
+      const contentDisposition = response.headers['content-disposition'];
+      const fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+      const matches = fileNameRegex.exec(contentDisposition);
+      const filename = matches && matches[1] ? matches[1].replace(/['"]/g, '') : 'rating_history.csv';
+  
+      // Save the file using FileSaver.js
+      saveAs(new Blob([response.data]), filename);
+    } catch (error) {
+      console.error("Error downloading CSV:", error);
+    }
+  };
+
   return (
-    <div>
-      <h1>Chess Players Dashboard</h1>
+    <div style={{ display: "flex", flexDirection: "column", width: "100vw", justifyContent: "center" }}>
+      <h1>Global Lichess Dashboard</h1>
       <div>
-        <h2>Top Players</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Rating History</th>
-            </tr>
-          </thead>
-          <tbody>
-            {topPlayers.map((player) => (
-              <tr key={player}>
-                <td>{player[1]}</td>
-                <td>
-                  {/* Link to individual player's rating history */}
-                  <Link to={`/player/${player[1]}`} target="_blank" rel="noopener noreferrer">
-                    Graph Visualization
-                  </Link>
-                </td>
+        <hr/>
+        <h2>Download</h2>
+        <button title="Download 30 days History of Top 50 players in .csv format" onClick={downloadCSV}>
+          Download CSV
+        </button>
+        <hr/>
+      
+        <h2>Top 50 Players</h2>
+        {topPlayers.length > 0 ?
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Rating</th>
+                <th>Visualization</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {topPlayers.map((player) => (
+                <tr key={player}>
+                  <td>{player[0]}</td>
+                  <td>{player[1]}</td>
+                  <td>{player[2]}</td>
+                  <td>
+                    {/* Link to individual player's rating history */}
+                    <Link to={`/player/${player[1]}`} target="_blank" rel="noopener noreferrer">
+                      Graph Visualization
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          :
+          <div>
+            <img
+              src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.webp"
+              alt="Loading data..."
+              width={80}
+            />
+            <p style={{ justifyContent: "center", fontWeight: "bold", }}>
+              Loading...
+            </p>
+          </div>
+        }
       </div>
       {selectedPlayer && (
         <div>
