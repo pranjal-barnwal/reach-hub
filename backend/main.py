@@ -6,8 +6,6 @@ from io import StringIO
 import csv
 from datetime import datetime, timedelta
 
-from app import fetch_and_store_data
-
 
 
 
@@ -41,7 +39,7 @@ rating_history_url = "https://lichess.org/api/user/{username}/rating-history"
 
 
 
-            
+
 
 
 # Backend Home EndPoint Test link

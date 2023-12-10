@@ -1,6 +1,10 @@
 # Lichess Dashboard 
 ## Reach-Hub's Assessment | Pranjal Kumar
-Assessment files for reach-hub custom Lichess API
+Assessment files for reach-hub custom Lichess API, featuring Frontend client and Backend server.
+
+## Built with
+- **Frontend:** ReactJs, axios, react-hooks, recharts
+- **Backend:** Python, FastAPI, PostgreSQL
 
 <img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
 
@@ -12,10 +16,11 @@ Assessment files for reach-hub custom Lichess API
 ## Endpoints of API
 | Endpoint                            | Method | Description                                      | Example                                      |
 | ----------------------------------- | ------ | ------------------------------------------------ | -------------------------------------------- |
-| `/player/{username}/rating-history`  | GET    | Username's rating history                     | `curl {baseURL}/player/johndoe/rating-history` |
+| `/player/{username}/rating-history`  | GET    | Username's rating history                     | `curl {baseURL}/player/{username}/rating-history` |
 | `/top-players`                      | GET    | Returns list of top players                          | `curl {baseURL}/top-players`     |
 | `/players/rating-history-csv`        | GET    | Download top players' rating history in CSV         | `curl {baseURL}/players/rating-history-csv` |
 
+- **{baseurl}:** for running API service locally will be: `localhost:8000` by default
 
 ## Clone the Repository
 ```bash
