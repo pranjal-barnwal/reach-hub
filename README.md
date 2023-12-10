@@ -5,6 +5,7 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 ## Built with
 - **Frontend:** ReactJs, axios, react-hooks, recharts
 - **Backend:** Python, FastAPI, PostgreSQL
+- **Tools:** Thunderclient, Nodemon
 
 <img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
 
@@ -16,11 +17,12 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 ## Endpoints of API
 | Endpoint                            | Method | Description                                      | Example                                      |
 | ----------------------------------- | ------ | ------------------------------------------------ | -------------------------------------------- |
+| `/`  | GET    | Testing connection                     | `curl {baseURL}/ |
 | `/player/{username}/rating-history`  | GET    | Username's rating history                     | `curl {baseURL}/player/{username}/rating-history` |
 | `/top-players`                      | GET    | Returns list of top players                          | `curl {baseURL}/top-players`     |
 | `/players/rating-history-csv`        | GET    | Download top players' rating history in CSV         | `curl {baseURL}/players/rating-history-csv` |
 
-- **{baseurl}:** for running API service locally will be: `localhost:8000` by default
+- **{baseurl}** for running API service locally will be: [`localhost:8000`](http://localhost:8000) by default
 
 ## Documentation
 - [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
@@ -40,7 +42,10 @@ cd reach-hub
 ```
 
 ## Database set up
+1. Install PostgreSQL and setup with `username` and `password`
+2. Open pgAdmin client
 ```bash
+
 ```
 
 ## Server set up
@@ -57,7 +62,8 @@ pip i
 # running app of main.py for server
 uvicorn main:app --reload
 ```
-
+**API-url:** [`localhost:8000`](http://localhost:8000)
+> Apply endpoints at the end of this url
 
 ## Frontend set up
 ```bash
@@ -70,6 +76,7 @@ npm i
 # running frontend client
 npm start
 ```
+**Deployment-url:** [`localhost:3000`](http://localhost:3000)
 
 
 ## Optimizations
@@ -81,7 +88,8 @@ npm start
 
     - *We would still need to update the database daily because of updated ratings. So we can use a self repeatable function with 1-day delay to update the database*
 
-- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not resource and time intensive, so we don't need to store them in Database
+- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database. We will keep it for the next version upgrade. 
+    - *We could also have used a different database table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
 
 
 ## License

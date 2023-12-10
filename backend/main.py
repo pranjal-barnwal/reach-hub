@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 import requests
-import threading
 from io import StringIO
 import csv
 from datetime import datetime, timedelta
@@ -94,7 +93,7 @@ def get_rating_history(username: str):
 
         # Get the date range for the last 30 days
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=30)
+        start_date = end_date - timedelta(days=29)
         date_range = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
 
         # Create CSV data for each date with the corresponding rating or the last available rating
