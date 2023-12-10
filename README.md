@@ -2,6 +2,29 @@
 ## Reach-Hub's Assessment | Pranjal Kumar
 Assessment files for reach-hub custom Lichess API, featuring Frontend client and Backend server.
 
+<h3 align="center">
+    🔹
+    <a href="https://github.com/pranjal-barnwal/reach-hub/issues">Report Bug</a> &nbsp;
+    🔹 &nbsp;
+    <a href="https://github.com/pranjal-barnwal/reach-hub/issues">Request Feature</a>
+    🔹
+</h3>
+
+## Index
+- [**Built with**](#built-with)
+- [**Functionality**](#functionality)
+- [**API Endpoints**](#endpoints-of-api)
+- [**Documentation**](#documentation-📃)
+    - [**Backend docs**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
+    - [**Frontend docs**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md)
+    - [**Official Lichess API**](https://lichess.org/api)
+- [**Requirements**](#requirements)
+- [**Set up**](#set-up)
+- [**Optimization**](#optimizations)
+- [**License**](#license)
+- [**Support**](#show-your-support)
+
+
 ## Built with
 - **Frontend:** ReactJs, axios, react-hooks, recharts
 - **Backend:** Python, FastAPI, PostgreSQL
@@ -24,9 +47,12 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 
 - **{baseurl}** for running API service locally will be: [`localhost:8000`](http://localhost:8000) by default
 
-## Documentation
-- [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
-- [**Frontend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md)
+## Documentation 📃
+- [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md): Complete backend client guide
+- [**Frontend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md): Complete frontend client guide
+- [**Lichess API**](https://lichess.org/api): Official Lichess API documentation
+
+> Read it before moving forward
 
 ## Requirements
 - Git
@@ -35,13 +61,14 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 - NodeJs
 - NPM
 
-## Clone the Repository
+## Set up
+### Clone the Repository
 ```bash
 git clone git@github.com:pranjal-barnwal/reach-hub.git
 cd reach-hub
 ```
 
-## Database set up
+### Database set up
 1. Install [**PostgreSQL**](https://www.postgresql.org/download/) with default configurations
 1. Set `username` and `password`, remember this because we will need it in `./backend/app.py` file to connect with database
 1. Open **pgAdmin** client
@@ -61,7 +88,7 @@ cd reach-hub
     ```
 1. Now we're ready to move forward 
 
-## Server set up
+### Server set up
 ```bash
 # moving to the backend folder
 cd .\backend\ 
@@ -78,7 +105,7 @@ uvicorn main:app --reload
 **API-url:** [`localhost:8000`](http://localhost:8000)
 > Apply endpoints at the end of this url
 
-## Frontend set up
+### Frontend set up
 ```bash
 # moving to frontend folder
 cd .\frontend\ 
@@ -111,5 +138,7 @@ npm start
 
 ## Show your support
 Hit the ⭐ if you liked this Project!
+
+**Contact** `pranjal.barn@gmail.com` for support
 
 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="80">

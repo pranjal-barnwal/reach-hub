@@ -4,8 +4,8 @@ Frontend client of Lichess API Dashboard built with `React.js`
 
 [![https://github.com/pranjal-barnwal/reach-hub](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/pranjal-barnwal/reach-hub) &nbsp;
 [![https://github.com/pranjal-barnwal/reach-hub](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/pranjal-barnwal/reach-hub) &nbsp;
-![https://github.com/pranjal-barnwal/devTube](https://img.shields.io/github/stars/pranjal-barnwal/devTube?color=red&logo=github&style=for-the-badge) &nbsp;
-![https://github.com/pranjal-barnwal/devTube](https://img.shields.io/github/forks/pranjal-barnwal/devTube?color=red&logo=github&style=for-the-badge)
+![https://github.com/pranjal-barnwal/reach-hub](https://img.shields.io/github/stars/pranjal-barnwal/reach-hub?color=red&logo=github&style=for-the-badge) &nbsp;
+![https://github.com/pranjal-barnwal/reach-hub](https://img.shields.io/github/forks/pranjal-barnwal/reach-hub?color=red&logo=github&style=for-the-badge)
 
 </center>
 

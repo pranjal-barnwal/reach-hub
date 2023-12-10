@@ -16,8 +16,10 @@ app = FastAPI()
 # Enable CORS (Cross-Origin Resource Sharing) for your FastAPI app
 origins = [
     "http://localhost",
-    "http://localhost:3000",  # Replace with your React app's URL during development
+    "http://localhost:3000",  
 ]
+# if using deployment, then replace the above with URL of Frontend client deployment
+
 
 app.add_middleware(
     CORSMiddleware,
