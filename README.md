@@ -1,7 +1,10 @@
 # Lichess Dashboard 
 ## Reach-Hub's Assessment | Pranjal Kumar
-Assessment files for reach-hub custom Lichess API, featuring Frontend client and Backend server.
+Assessment files for reach-hub custom Lichess API, featuring Frontend client and Backend server. The Frontend ensures a user-friendly interface, while the Backend handles data processing and API interactions. Together, they exemplify a well-structured system, offering insights into building robust applications with Lichess API integration.
 
+<div align="center">
+<img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
+</div>
 <h3 align="center">
     🔹
     <a href="https://github.com/pranjal-barnwal/reach-hub/issues">Report Bug</a> &nbsp;
@@ -9,6 +12,7 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
     <a href="https://github.com/pranjal-barnwal/reach-hub/issues">Request Feature</a>
     🔹
 </h3>
+
 
 ## Index
 - [**Built with**](#built-with)
@@ -30,7 +34,6 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 - **Backend:** Python, FastAPI, PostgreSQL
 - **Tools:** Thunderclient, Nodemon
 
-<img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
 
 ## Functionality
 - Access and view the rating history for an individual player
