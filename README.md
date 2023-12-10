@@ -1,6 +1,6 @@
 # Lichess Dashboard 
 ## Reach-Hub's Assessment | Pranjal Kumar
-Assessment files for reach-hub custom Lichess API, featuring Frontend client and Backend server. The Frontend ensures a user-friendly interface, while the Backend handles data processing and API interactions. Together, they exemplify a well-structured system, offering insights into building robust applications with Lichess API integration.
+Assessment files for reach-hub custom ***Lichess API***, featuring Frontend client with **ReactJs** and Backend server with **Python**, **FastAPI** & **PostgreSQL**. 
 
 <div align="center">
 <img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
@@ -124,12 +124,13 @@ npm start
 
 ## Optimizations
 - Once the top players are loaded in Frontend client, we will check if the rating history CSV has been loaded. If it hasn't, we will start the process in the background. This will allow the CSV to be downloaded faster when the user clicks the "Download CSV" button.
-
     - *There's a limit of 1 second in Lichess API for each request. So 50 requests will by-default will take about 50 seconds to process with additional delays* 
+    - This was the initial implementation which we implemented, but later replaced with the below method of directly fetching data from PostgreSQL database
 
-- More improved model would be first creating the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
+- More improved model was to first create the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
 
     - *We would still need to update the database daily because of updated ratings. So we can use a self repeatable function with 1-day delay to update the database*
+    - To do this, we created
 
 - Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database. We will keep it for the next version upgrade. 
     - *We could also have used a different database table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*

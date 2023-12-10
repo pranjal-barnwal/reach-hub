@@ -123,7 +123,7 @@ def get_rating_history(username: str):
 @app.get("/players/rating-history-csv", response_class=Response)
 def get_rating_history_csv():
     try:
-        # if data is already present in SQL Database, then we will fetch from it and return
+        # if data is already present in PostgreSQL Database, then we will fetch from it and return
         if checkDataPresent()==True:
             csv_content = fetchCsv()
             # print(csv_content)
@@ -170,7 +170,8 @@ def get_rating_history_csv():
         csv_data_str = csv_data.getvalue()
         print("CSV DATA STR:")
         print(csv_data_str)
-        # Save the CSV data to the SQL Database
+
+        # Save the CSV data to the PostgreSQL Database
         saveCsv(csv_data_str)
 
         # Set up response with CSV data
