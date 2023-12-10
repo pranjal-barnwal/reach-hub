@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/" className='font-weight-bold'><span className='customicon'><FaChessKnight /></span>Lichess Portal</Navbar.Brand>
+        <Navbar.Brand href="/"><span className='customicon'><FaChessKnight /></span><span className='font-weight-bold'>Lichess Portal</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
