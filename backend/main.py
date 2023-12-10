@@ -41,13 +41,7 @@ rating_history_url = "https://lichess.org/api/user/{username}/rating-history"
 
 
 
-
-
-# Example FastAPI route to fetch and store data in the database
-@app.get("/fetch-and-store-data")
-def fetch_and_store_to_db():
-    return fetch_and_store_data()
-
+            
 
 
 # Backend Home EndPoint Test link

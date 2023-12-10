@@ -1,14 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
 import { Link } from "react-router-dom";
 import { saveAs } from 'file-saver';
 import Loader from './Loader';
@@ -17,8 +8,8 @@ const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [ratingHistory, setRatingHistory] = useState([]);
-  const [chartData, setchartData] = useState([]);
-  console.log(ratingHistory);
+  // console.log(ratingHistory);
+  
   useEffect(() => {
     // Fetch top players data from the FastAPI endpoint
     const fetchTopPlayers = async () => {
@@ -31,6 +22,8 @@ const Dashboard = () => {
     };
 
     fetchTopPlayers();
+
+    // as soon the top players are loaded, we will check if rating history csv is loaded or not. If now, then we will start the process in background, so that when the person clicks the Download CSV button, it will appear to download faster
   }, []);
 
   // Fetch rating history when a player is selected

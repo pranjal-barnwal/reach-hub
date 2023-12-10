@@ -1,4 +1,5 @@
-# Lichess Dashboard | Reach-Hub's Assessment | Pranjal Kumar
+# Lichess Dashboard 
+## Reach-Hub's Assessment | Pranjal Kumar
 Assessment files for reach-hub custom Lichess API
 
 <img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
@@ -25,6 +26,21 @@ cd reach-hub
 ## Documentation
 - [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
 - [**Frontend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md)
+
+
+
+
+
+## Optimizations
+- Once the top players are loaded in Frontend client, we will check if the rating history CSV has been loaded. If it hasn't, we will start the process in the background. This will allow the CSV to be downloaded faster when the user clicks the "Download CSV" button.
+
+    - *There's a limit of 1 second in Lichess API for each request. So 50 requests will by-default will take about 50 seconds to process with additional delays* 
+
+- More improved model would be first creating the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
+
+    - *We would still need to update the database daily because of updated ratings. So we can use a self repeatable function with 1-day delay to update the database*
+
+- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not resource and time intensive, so we don't need to store them in Database
 
 
 ## License
