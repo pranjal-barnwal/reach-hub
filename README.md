@@ -22,18 +22,54 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 
 - **{baseurl}:** for running API service locally will be: `localhost:8000` by default
 
+## Documentation
+- [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
+- [**Frontend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md)
+
+## Requirements
+- Git
+- PostgreSQL
+- Python
+- NodeJs
+- NPM
+
 ## Clone the Repository
 ```bash
 git clone git@github.com:pranjal-barnwal/reach-hub.git
 cd reach-hub
 ```
 
-## Documentation
-- [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md)
-- [**Frontend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/frontend/README.md)
+## Database set up
+```bash
+```
+
+## Server set up
+```bash
+# moving to the backend folder
+cd .\backend\ 
+
+# installing all the dependencies
+pip i
+
+# activating virtual environment script
+.\env\Scripts\activate
+
+# running app of main.py for server
+uvicorn main:app --reload
+```
 
 
+## Frontend set up
+```bash
+# moving to frontend folder
+cd .\frontend\ 
 
+# installing all required dependencies
+npm i
+
+# running frontend client
+npm start
+```
 
 
 ## Optimizations
