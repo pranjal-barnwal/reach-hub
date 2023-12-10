@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { redirect, useParams } from "react-router-dom";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Loader from "./Loader";
+import Button from 'react-bootstrap/Button';
 
 function RatingHistory() {
   const { player } = useParams();
@@ -35,7 +36,7 @@ function RatingHistory() {
 
   const redirectToOfficial = () => {
     let url = 'https://lichess.org/@/' + player;
-    window.location.href = url;
+    window.open(url, '_blank');
   }
 
 
@@ -44,7 +45,7 @@ function RatingHistory() {
       {data.length > 0 ?
         <>
           <h1>Last 30 days of {player}'s Data</h1>
-          <ResponsiveContainer width="50%" height="50%">
+          <ResponsiveContainer width="50%" height="60%">
             <LineChart
               width={500}
               height={300}
@@ -69,10 +70,9 @@ function RatingHistory() {
               />
             </LineChart>
           </ResponsiveContainer>
-          <br/>
-          <button title="View the profile on Official Lichess Portal" onClick={redirectToOfficial} >
-            View Official
-          </button>
+          <Button className="mt-3 px-5 py-2" variant="secondary" title="View the profile on Official Lichess Portal" onClick={redirectToOfficial} >
+            {player}'s profile
+          </Button>
         </>
         :
         <Loader />}

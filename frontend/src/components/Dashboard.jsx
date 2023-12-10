@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { saveAs } from 'file-saver';
 import Loader from './Loader';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+
 
 const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
@@ -49,7 +52,6 @@ const Dashboard = () => {
 
   const downloadCSV = async () => {
     try {
-      alert("Don't refresh the page! \nIt will take some time to process the request and your Download is in queue");
       const response = await axios.get('http://localhost:8000/players/rating-history-csv', {
         responseType: 'blob', // Ensure the response type is set to blob
       });
@@ -73,15 +75,15 @@ const Dashboard = () => {
       <div>
         <hr />
         <h2>Download</h2>
-        <button title="Download 30 days History of Top 50 players in .csv format" onClick={downloadCSV}>
-          Download CSV
-        </button>
+        <Button className="px-5 py-2" variant="success" title="Download 30 days History of Top 50 players in .csv format" onClick={downloadCSV} >
+            Download CSV
+        </Button>
         <hr />
 
         <h2>Top 50 Players</h2>
         {topPlayers.length > 0 ?
 
-          <table>
+          <Table striped>
             <thead>
               <tr>
                 <th>ID</th>
@@ -98,14 +100,15 @@ const Dashboard = () => {
                   <td>{player[2]}</td>
                   <td>
                     {/* Link to individual player's rating history */}
-                    <Link to={`/player/${player[1]}`} target="_blank" rel="noopener noreferrer">
+                    {/* <Link to={`/player/${player[1]}`} target="_blank" rel="noopener noreferrer"> */}
+                    <Link to={`/player/${player[1]}`} rel="noopener noreferrer">
                       Graph Visualization
                     </Link>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
           :
           <Loader/>
         }

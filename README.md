@@ -30,7 +30,7 @@ Assessment files for reach-hub custom ***Lichess API***, featuring Frontend clie
 
 
 ## Built with
-- **Frontend:** ReactJs, axios, react-hooks, recharts
+- **Frontend:** ReactJs, axios, react-hooks, recharts, react-bootstrap
 - **Backend:** Python, FastAPI, PostgreSQL
 - **Tools:** Thunderclient, Nodemon
 
@@ -132,7 +132,7 @@ npm start
     - *We would still need to update the database because of updated ratings. So we used a self repeatable function with 15-minute interval to update the database*
     - To do this, we used `schedule` module in Python to call `get_rating_history_csv()` after every 15 minutes
 
-- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database. We will keep it for the next version upgrade. 
+- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database currently. We will keep it for the next version upgrade. 
     - *We could also have used a different table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
 
 
