@@ -4,6 +4,7 @@ import requests
 from io import StringIO
 import csv
 from datetime import datetime, timedelta
+from app import checkDataPresent, saveCsv, fetchCsv
 
 
 
@@ -120,6 +121,14 @@ def get_rating_history(username: str):
 @app.get("/players/rating-history-csv", response_class=Response)
 def get_rating_history_csv():
     try:
+        # if data is already present in SQL Database, then we will fetch from it and return
+        if checkDataPresent()==True:
+            csv_content = fetchCsv()
+            # print(csv_content)
+            response = Response(content=csv_content, media_type="text/csv")
+            response.headers["Content-Disposition"] = "attachment; filename=rating_history.csv"
+            return response
+
         # first fetching the list of top 50 players and extracting users array from it
         top_players_response = get_top_players()
         # print(top_players_response.get("top_players"))
@@ -153,8 +162,17 @@ def get_rating_history_csv():
             # Write player data to CSV
             csv_writer.writerow(current_row)
 
+        print("CSV DATA:")
+        print(csv_data)
+        # Convert CSV data to string format
+        csv_data_str = csv_data.getvalue()
+        print("CSV DATA STR:")
+        print(csv_data_str)
+        # Save the CSV data to the SQL Database
+        saveCsv(csv_data_str)
+
         # Set up response with CSV data
-        response = Response(content=csv_data.getvalue(), media_type="text/csv")
+        response = Response(content=csv_data_str, media_type="text/csv")
         response.headers["Content-Disposition"] = "attachment; filename=rating_history.csv"
         return response
 

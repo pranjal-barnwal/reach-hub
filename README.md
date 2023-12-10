@@ -42,11 +42,24 @@ cd reach-hub
 ```
 
 ## Database set up
-1. Install PostgreSQL and setup with `username` and `password`
-2. Open pgAdmin client
-```bash
-
-```
+1. Install [**PostgreSQL**](https://www.postgresql.org/download/) with default configurations
+1. Set `username` and `password`, remember this because we will need it in `./backend/app.py` file to connect with database
+1. Open **pgAdmin** client
+1. Create Database with name: `csvstore`
+1. Inside `csvstore`, create Table with name: `csvtable`
+1. Inside `csvtable`, create Column: `csv_content`. 
+1. With this our schema is ready
+1. Now come back to: `./backend/app.py` file and update all the necessary changes, updating the credentials into it
+    ```py
+    conn = psycopg2.connect(
+        dbname='csvstore',
+        user='postgres',
+        password='1234',
+        host='localhost',
+        port="5432"
+    )
+    ```
+1. Now we're ready to move forward 
 
 ## Server set up
 ```bash
