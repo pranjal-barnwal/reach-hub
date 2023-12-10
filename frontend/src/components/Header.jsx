@@ -5,6 +5,10 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { FaGithub,FaSearch } from "react-icons/fa";
+import { MdSpaceDashboard } from "react-icons/md";
+import { SiWebpack } from "react-icons/si";
+import { FaChessKnight } from "react-icons/fa6";
 
 
 const Header = () => {
@@ -26,7 +30,7 @@ const Header = () => {
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/" className='font-weight-bold'>Lichess Portal</Navbar.Brand>
+        <Navbar.Brand href="/" className='font-weight-bold'><span className='customicon'><FaChessKnight/></span>Lichess Portal</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -34,9 +38,9 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">Dashboard</Nav.Link>
-            <Nav.Link href="https://github.com/pranjal-barnwal/reach-hub">Repo</Nav.Link>
-            <Nav.Link href="https://reachhub.co">ReachHub</Nav.Link>
+            <Nav.Link href="/"><span className='customicon'><MdSpaceDashboard/></span>Dashboard</Nav.Link>
+            <Nav.Link href="https://github.com/pranjal-barnwal/reach-hub"><span className='customicon'><FaGithub/></span>Repo</Nav.Link>
+            <Nav.Link href="https://reachhub.co"><span className='customicon'><SiWebpack/></span>ReachHub</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -46,7 +50,7 @@ const Header = () => {
               aria-label="Search"
               onChange={(e) => handleKeyPress(e)}
             />
-            <Button variant="success" onClick={redirectToProfile}>Go</Button>
+            <Button variant="success" onClick={redirectToProfile}><span className='customicon'><FaSearch/></span></Button>
           </Form>
         </Navbar.Collapse>
       </Container>

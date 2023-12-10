@@ -30,8 +30,8 @@ Assessment files for reach-hub custom ***Lichess API***, featuring Frontend clie
 
 
 ## Built with
-- **Frontend:** ReactJs, axios, react-hooks, recharts, react-bootstrap
-- **Backend:** Python, FastAPI, PostgreSQL
+- **Frontend:** ReactJs, axios, react-hooks, recharts, react-bootstrap, react-icons, auth0
+- **Backend:** Python, FastAPI, PostgreSQL, psycopg2
 - **Tools:** Thunderclient, Nodemon
 
 

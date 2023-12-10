@@ -6,11 +6,8 @@ import Loader from './Loader';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
-
 const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [ratingHistory, setRatingHistory] = useState([]);
   // console.log(ratingHistory);
   
   useEffect(() => {
@@ -29,26 +26,6 @@ const Dashboard = () => {
     // as soon the top players are loaded, we will check if rating history csv is loaded or not. If now, then we will start the process in background, so that when the person clicks the Download CSV button, it will appear to download faster
   }, []);
 
-  // Fetch rating history when a player is selected
-  useEffect(() => {
-    const fetchRatingHistory = async () => {
-      if (selectedPlayer) {
-        try {
-          const response = await axios.get(
-            `http://localhost:8000/player/${selectedPlayer}/rating-history`
-          );
-          setRatingHistory(response.data.rating_history);
-        } catch (error) {
-          console.error(
-            `Error fetching rating history for ${selectedPlayer}:`,
-            error
-          );
-        }
-      }
-    };
-
-    fetchRatingHistory();
-  }, [selectedPlayer]);
 
   const downloadCSV = async () => {
     try {
@@ -100,7 +77,6 @@ const Dashboard = () => {
                   <td>{player[2]}</td>
                   <td>
                     {/* Link to individual player's rating history */}
-                    {/* <Link to={`/player/${player[1]}`} target="_blank" rel="noopener noreferrer"> */}
                     <Link to={`/player/${player[1]}`} rel="noopener noreferrer">
                       Graph Visualization
                     </Link>
@@ -113,11 +89,7 @@ const Dashboard = () => {
           <Loader/>
         }
       </div>
-      {selectedPlayer && (
-        <div>
-          <h2>{selectedPlayer}'s Rating History</h2>
-        </div>
-      )}
+      
     </div>
   );
 };
