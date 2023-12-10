@@ -97,7 +97,7 @@ cd reach-hub
 cd .\backend\ 
 
 # installing all the dependencies
-pip i
+pip install fastapi requests io csv datetime psycopg2 schedule
 
 # activating virtual environment script
 .\env\Scripts\activate
@@ -129,11 +129,11 @@ npm start
 
 - More improved model was to first create the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
 
-    - *We would still need to update the database daily because of updated ratings. So we can use a self repeatable function with 1-day delay to update the database*
-    - To do this, we created
+    - *We would still need to update the database because of updated ratings. So we used a self repeatable function with 15-minute interval to update the database*
+    - To do this, we used `schedule` module in Python to call `get_rating_history_csv()` after every 15 minutes
 
 - Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database. We will keep it for the next version upgrade. 
-    - *We could also have used a different database table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
+    - *We could also have used a different table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
 
 
 ## License

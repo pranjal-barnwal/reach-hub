@@ -52,7 +52,7 @@ by **ReachHub** | [**Pranjal Kumar**](https://linkedin.com/in/pranjal-barnwal)
 cd .\backend\ 
 
 # installing all the dependencies
-pip i fastapi requests io csv datetime psycopg2
+pip install fastapi requests io csv datetime psycopg2 schedule
 
 # activating virtual environment script
 .\env\Scripts\activate

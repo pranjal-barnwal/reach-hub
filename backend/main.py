@@ -5,7 +5,9 @@ from io import StringIO
 import csv
 from datetime import datetime, timedelta
 from app import checkDataPresent, saveCsv, fetchCsv
-
+import schedule
+import threading
+import time
 
 
 
@@ -42,6 +44,28 @@ rating_history_url = "https://lichess.org/api/user/{username}/rating-history"
 
 
 
+# Making the task repeatible, so that data in PostgreSQL database is always updated
+def task():
+    # executed every 15 minutes
+    print("Updating data in SQL Database...")
+    # this will update the data in PostgreSQL database
+    get_rating_history_csv()
+
+# Schedule the task to run every 15 minutes
+schedule.every(15).minutes.do(task)
+
+# Function for the schedule thread
+def schedule_thread():
+    while True:
+        schedule.run_pending()
+        time.sleep(3000)  # Check every 300 seconds, adjust as needed
+
+# Start the schedule thread
+schedule_thread = threading.Thread(target=schedule_thread)
+schedule_thread.start()
+
+
+
 
 
 # Backend Home EndPoint Test link
@@ -50,8 +74,6 @@ def get_home():
     return {"message": "Welcome to ReachHub's Lichess.org API services! \n\nRead the documentation here for more details: \nLink: https://github.com/pranjal-barnwal/reach-hub/readme.md"}
 
     
-
-
 
 
 # Example route to fetch the top 50 classical chess players

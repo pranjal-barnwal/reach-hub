@@ -11,7 +11,7 @@ conn = psycopg2.connect(
 
 
 def saveCsv(csv_content):
-    print("SAVE CSV")
+    # print("SAVE CSV")
     # Open a cursor to perform database operations
     cur = conn.cursor()
 
@@ -23,7 +23,7 @@ def saveCsv(csv_content):
     cur.close()
 
 def checkDataPresent():
-    print("CHECK DATA PRESENT")
+    # print("CHECK DATA PRESENT")
     # Open a cursor to perform database operations
     cur = conn.cursor()
 
@@ -43,7 +43,7 @@ def checkDataPresent():
         return True
 
 def fetchCsv():
-    print("FETCH CSV")
+    # print("FETCH CSV")
     # Open a cursor to perform database operations
     cur = conn.cursor()
 
