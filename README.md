@@ -17,7 +17,7 @@ Assessment files for reach-hub custom Lichess API, featuring Frontend client and
 ## Endpoints of API
 | Endpoint                            | Method | Description                                      | Example                                      |
 | ----------------------------------- | ------ | ------------------------------------------------ | -------------------------------------------- |
-| `/`  | GET    | Testing connection                     | `curl {baseURL}/ |
+| `/`  | GET    | Testing connection                     | `curl {baseURL}/` |
 | `/player/{username}/rating-history`  | GET    | Username's rating history                     | `curl {baseURL}/player/{username}/rating-history` |
 | `/top-players`                      | GET    | Returns list of top players                          | `curl {baseURL}/top-players`     |
 | `/players/rating-history-csv`        | GET    | Download top players' rating history in CSV         | `curl {baseURL}/players/rating-history-csv` |
@@ -76,7 +76,7 @@ npm i
 # running frontend client
 npm start
 ```
-**Deployment-url:** [`localhost:3000`](http://localhost:3000)
+**Client-url:** [`localhost:3000`](http://localhost:3000)
 
 
 ## Optimizations
