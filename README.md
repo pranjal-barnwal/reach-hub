@@ -123,17 +123,21 @@ npm start
 
 
 ## Optimizations
-- Once the top players are loaded in Frontend client, we will check if the rating history CSV has been loaded. If it hasn't, we will start the process in the background. This will allow the CSV to be downloaded faster when the user clicks the "Download CSV" button.
+- ~~Once the top players are loaded in Frontend client, we will check if the rating history CSV has been loaded. If it hasn't, we will start the process in the background. This will allow the CSV to be downloaded faster when the user clicks the "Download CSV" button.~~
     - *There's a limit of 1 second in Lichess API for each request. So 50 requests will by-default will take about 50 seconds to process with additional delays* 
     - This was the initial implementation which we implemented, but later replaced with the below method of directly fetching data from PostgreSQL database
 
-- More improved model was to first create the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
+- **Backend Optimization using Database:** More improved model was to first create the complete CSV table in advance and storing it into the PostgreSQL Database and fetching it directly from our database, instead of using Lichess API again and again.
 
     - *We would still need to update the database because of updated ratings. So we used a self repeatable function with 15-minute interval to update the database*
     - To do this, we used `schedule` module in Python to call `get_rating_history_csv()` after every 15 minutes
 
-- Since loading `/top-players` or `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database currently. We will keep it for the next version upgrade. 
+- **Frontend Optimization:** Improved load time and removed unnecessary reloads of Top-Players data by loading it directly in `App.js` & updating content with `useState` Hook and then passing it into `Dashboard.jsx` using prop drilling
+
+- Since loading `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database currently. We will keep it for the next version upgrade. 
     - *We could also have used a different table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
+
+
 
 
 ## License
