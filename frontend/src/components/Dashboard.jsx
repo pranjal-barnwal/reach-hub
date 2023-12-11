@@ -7,25 +7,26 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FiExternalLink } from "react-icons/fi";
 
-const Dashboard = () => {
-  const [topPlayers, setTopPlayers] = useState([]);
-  // console.log(ratingHistory);
+const Dashboard = (props) => {
+  const {topPlayers} = props;
+  // const [topPlayers, setTopPlayers] = useState([]);
+  // // console.log(ratingHistory);
   
-  useEffect(() => {
-    // Fetch top players data from the FastAPI endpoint
-    const fetchTopPlayers = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/top-players");
-        setTopPlayers(response.data.top_players);
-      } catch (error) {
-        console.error("Error fetching top players:", error);
-      }
-    };
+  // useEffect(() => {
+  //   // Fetch top players data from the FastAPI endpoint
+  //   const fetchTopPlayers = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:8000/top-players");
+  //       setTopPlayers(response.data.top_players);
+  //     } catch (error) {
+  //       console.error("Error fetching top players:", error);
+  //     }
+  //   };
 
-    fetchTopPlayers();
+  //   fetchTopPlayers();
 
-    // as soon the top players are loaded, we will check if rating history csv is loaded or not. If now, then we will start the process in background, so that when the person clicks the Download CSV button, it will appear to download faster
-  }, []);
+  //   // as soon the top players are loaded, we will check if rating history csv is loaded or not. If now, then we will start the process in background, so that when the person clicks the Download CSV button, it will appear to download faster
+  // }, []);
 
 
   const downloadCSV = async () => {
@@ -61,7 +62,7 @@ const Dashboard = () => {
         <h2>Top 50 Players</h2>
         {topPlayers.length > 0 ?
 
-          <Table striped className="table-bordered ">
+          <Table striped className="table-bordered table-hover">
             <thead>
               <tr>
                 <th>ID</th>
