@@ -20,7 +20,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    console.log(event.key);
+    console.log(event.target.value);
+    if (event.which === 13) {
       event.preventDefault(); // Prevents the default form submission behavior
       redirectToProfile();
     }
@@ -43,8 +45,8 @@ const Header = () => {
             navbarScroll
           >
             <Nav.Link href="/"><span className='customicon'><MdSpaceDashboard /></span>Dashboard</Nav.Link>
-            <Nav.Link href="https://github.com/pranjal-barnwal/reach-hub"><span className='customicon'><FaGithub /></span>Repo</Nav.Link>
-            <Nav.Link href="https://reachhub.co"><span className='customicon'><SiWebpack /></span>ReachHub</Nav.Link>
+            <Nav.Link href="https://github.com/pranjal-barnwal/reach-hub" target='_blank'><span className='customicon'><FaGithub /></span>Repo</Nav.Link>
+            <Nav.Link href="https://reachhub.co" target='_blank'><span className='customicon'><SiWebpack /></span>ReachHub</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
