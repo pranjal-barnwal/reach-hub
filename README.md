@@ -25,6 +25,7 @@ Assessment files for reach-hub custom ***Lichess API***, featuring Frontend clie
 - [**Requirements**](#requirements)
 - [**Set up**](#set-up)
 - [**Optimization**](#optimizations)
+- [**Future Propositions**](#future-poropositions)
 - [**License**](#license)
 - [**Support**](#show-your-support)
 
@@ -146,6 +147,14 @@ npm start
 <img src="./res/rating-history.png" alt="Rating History" />
 
 
+## Future Poropositions
+- **Frontend**
+    - using ***Redux*** for Global State Management
+    - improving designs and adding more metrics and charts in `RatingHistory.jsx` for user
+    - replacing **Bootstrap** with ***Chakra UI***
+- **Backend**
+    - storing rating-history of top 50 users and the last users searched onto PostgreSQL database, as an effective method of ***Caching*** 
+    - adding more features for Signed Users
 
 ## License
 [**MIT License**](https://github.com/pranjal-barnwal/reach-hub/blob/main/license)

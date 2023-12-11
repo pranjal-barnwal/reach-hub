@@ -16,6 +16,8 @@ Frontend client of Lichess API Dashboard built with `React.js`
     <a href="https://github.com/pranjal-barnwal/reach-hub/issues">Request Feature</a>
     🔹
 </h3>
+<img src="../res/dashboard.png" alt="Lichess Dashboard" />
+
 
 
 ## Requirements
@@ -42,3 +44,5 @@ The page will reload if you make edits.
 ## **Usage Instructions**
 Open the project folder and Navigate to `/src/components/`. <br/>
 You will find all the components used and you can edit your information accordingly.
+
+<img src="../res/rating-history.png" alt="Rating History" />

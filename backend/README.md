@@ -1,6 +1,8 @@
 # Custom Lichess Backend with FastAPI & PostgreSQL
 by **ReachHub** | [**Pranjal Kumar**](https://linkedin.com/in/pranjal-barnwal)
 
+<img src="../res/fastapi.png" alt="api endpoints" />
+
 # Index
 - [Requirements](#requirements)
 - [Database set up](#database-set-up)
