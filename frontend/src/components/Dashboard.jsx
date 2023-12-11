@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import Loader from './Loader';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import { FiExternalLink } from "react-icons/fi";
 
 const Dashboard = () => {
   const [topPlayers, setTopPlayers] = useState([]);
@@ -60,7 +61,7 @@ const Dashboard = () => {
         <h2>Top 50 Players</h2>
         {topPlayers.length > 0 ?
 
-          <Table striped>
+          <Table striped className="table-bordered ">
             <thead>
               <tr>
                 <th>ID</th>
@@ -69,7 +70,7 @@ const Dashboard = () => {
                 <th>Visualization</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table-group-divider">
               {topPlayers.map((player) => (
                 <tr key={player}>
                   <td>{player[0]}</td>
@@ -77,8 +78,8 @@ const Dashboard = () => {
                   <td>{player[2]}</td>
                   <td>
                     {/* Link to individual player's rating history */}
-                    <Link to={`/player/${player[1]}`} rel="noopener noreferrer">
-                      Graph Visualization
+                    <Link className="link-success link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover fw-bold" to={`/player/${player[1]}`} rel="noopener noreferrer">
+                      Graph <span className='customicon fw-bold'><FiExternalLink /></span>
                     </Link>
                   </td>
                 </tr>
