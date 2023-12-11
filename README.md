@@ -28,6 +28,8 @@ Assessment files for reach-hub custom ***Lichess API***, featuring Frontend clie
 - [**License**](#license)
 - [**Support**](#show-your-support)
 
+<img src="./res/dashboard.png" alt="Lichess Dashboard" />
+
 
 ## Built with
 - **Frontend:** ReactJs, axios, react-hooks, recharts, react-bootstrap, react-icons, auth0
@@ -49,6 +51,8 @@ Assessment files for reach-hub custom ***Lichess API***, featuring Frontend clie
 | `/players/rating-history-csv`        | GET    | Download top players' rating history in CSV         | `curl {baseURL}/players/rating-history-csv` |
 
 - **{baseurl}** for running API service locally will be: [`localhost:8000`](http://localhost:8000) by default
+<img src="./res/fastapi.png" alt="api endpoints" />
+
 
 ## Documentation 📃
 - [**Backend Doc**](https://github.com/pranjal-barnwal/reach-hub/blob/main/backend/README.md): Complete backend client guide
@@ -91,6 +95,7 @@ cd reach-hub
     ```
 1. Now we're ready to move forward 
 
+
 ### Server set up
 ```bash
 # moving to the backend folder
@@ -107,6 +112,7 @@ uvicorn main:app --reload
 ```
 **API-url:** [`localhost:8000`](http://localhost:8000)
 > Apply endpoints at the end of this url
+
 
 ### Frontend set up
 ```bash
@@ -137,6 +143,7 @@ npm start
 - Since loading `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database currently. We will keep it for the next version upgrade. 
     - *We could also have used a different table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
 
+<img src="./res/rating-history.png" alt="Rating History" />
 
 
 

@@ -20,3 +20,20 @@ code {
   display: inline-block;
   padding-bottom: 5px;
 }
+
+
+/* Scroll Bar */
+::-webkit-scrollbar{
+  width: 0.60rem;
+  background-color: #4d4d4d;
+  /* border-radius: .5rem; */
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #badfce;
+  border-radius: .5rem;
+  box-shadow: 0 0 34px white;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #7ecaa7;
+}
