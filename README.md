@@ -1,6 +1,6 @@
 # Lichess Dashboard 
-## Reach-Hub's Assessment | Pranjal Kumar
-Assessment files for reach-hub custom ***Lichess API***, featuring Frontend client with **ReactJs** and Backend server with **Python**, **FastAPI** & **PostgreSQL**. 
+## Reach-Hub's Project | Pranjal Kumar
+Project files for reach-hub custom ***Lichess API***, featuring Frontend client with **ReactJs** and Backend server with **Python**, **FastAPI** & **PostgreSQL**. 
 
 <div align="center">
 <img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
