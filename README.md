@@ -3,7 +3,7 @@
 Project files for reach-hub custom ***Lichess API***, featuring Frontend client with **ReactJs** and Backend server with **Python**, **FastAPI** & **PostgreSQL**. 
 
 <div align="center">
-<img alt="Chess Doodle: pranjal-barnwal" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
+<img alt="Chess Doodle: pranjal-barnwal | Pranjal Kumar, Hazaribag Jharkhand" src="https://cdn.dribbble.com/users/872671/screenshots/2751155/linechessset2.gif" width="300"/>
 </div>
 <h3 align="center">
     🔹
@@ -29,7 +29,7 @@ Project files for reach-hub custom ***Lichess API***, featuring Frontend client 
 - [**License**](#license)
 - [**Support**](#show-your-support)
 
-<img src="./res/dashboard.png" alt="Lichess Dashboard" />
+<img src="./res/dashboard.png" alt="Lichess Dashboard: pranjal-barnwal | Pranjal Kumar, Hazaribag Jharkhand" />
 
 
 ## Built with
@@ -144,7 +144,7 @@ npm start
 - Since loading `/player/{username}/rating-history` endpoint is not much resource and time intensive, so we don't need to store them in Database currently. We will keep it for the next version upgrade. 
     - *We could also have used a different table with Primary-Key as username and other elements in row would be storing the ratings of last 30 days. So that if the same query occurs for the username, we could have fetched based upon the Primary-Key (username)*
 
-<img src="./res/rating-history.png" alt="Rating History" />
+<img src="./res/rating-history.png" alt="Rating History: pranjal-barnwal | Pranjal Kumar, Hazaribag Jharkhand" />
 
 
 ## Future Poropositions
@@ -165,4 +165,4 @@ Hit the ⭐ if you liked this Project!
 
 **Contact** `pranjal.barn@gmail.com` for support
 
-<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="80">
+<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" alt="Cute cat: pranjal-barnwal | Pranjal Kumar, Hazaribag Jharkhand" width="80">
